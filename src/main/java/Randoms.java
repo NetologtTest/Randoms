@@ -17,20 +17,27 @@ public class Randoms implements Iterable<Integer> {
     public Iterator<Integer> iterator() {
         return new Iterator<Integer>() {
 
+
+            int randomNum;
             int result;
+
             @Override
             public boolean hasNext() {
-                while (true) {
-                    result = random.nextInt(max+1);
-                    if (result >= min) {
-                        return true;
-                    }
-                }
+
+
+                result = max - min + 1;
+                if (result - 1 >= max - min) {
+                    return true;
+                } else return false;
+
             }
+
             @Override
             public Integer next() {
 
-                return result;
+
+                randomNum = random.nextInt(result) + min;
+                return randomNum;
             }
 
         };
